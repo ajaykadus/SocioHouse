@@ -1,0 +1,118 @@
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+#wrap{
+    background:#ddd;
+}
+
+.g-hover-card {
+    position: relative;
+    text-align: center;
+    background-color: #fff;
+}
+
+.g-hover-card img {
+}
+
+.g-hover-card .user-avatar {
+    position: relative;
+    top: -40px;
+    margin-bottom: -40px;
+}
+
+.g-hover-card .user-avatar img {
+    width: 80px;
+    height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.g-hover-card .info {
+    padding: 4px 8px 10px;
+}
+
+.g-hover-card  .info.title {
+    margin-bottom: 4px;
+    font-size: 24px;
+    line-height: 1;
+    color: #262626;
+    vertical-align: middle;
+}
+
+.g-hover-card  .info.descriptions {
+    overflow: hidden;
+    font-size: 12px;
+    line-height: 20px;
+    color: #737373;
+    text-overflow: ellipsis;
+}
+
+.g-hover-card .bottom {
+    padding: 0 20px;
+    margin-bottom: 17px;
+}
+.g-hover-card{
+    padding-top: 0;
+    overflow: hidden;
+}

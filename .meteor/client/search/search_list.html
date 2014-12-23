@@ -1,0 +1,16 @@
+<template name="search_list">
+    <div class="search-houses bar bar-header item-input-inset">
+    <label class="item-input-wrapper">
+        <i class="icon ion-ios7-search placeholder-icon"></i>
+        <input type="search" placeholder="Search">
+    </label>
+    <button class="button button-clear">
+        Cancel
+    </button>
+</div>
+    <div class="list">
+        {{#each searchList}}
+                {{> search_item}}
+        {{/each}}
+    </div>
+</template>
