@@ -1,6 +1,7 @@
-<template name="search_list">
+<template name="search">
+
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-12">
             <div class="input-group">
                 <input type="text" class="search-houses form-control" placeholder="Search for...">
       <span class="input-group-btn">
@@ -11,10 +12,7 @@
         </div>
         <!-- /.col-lg-6 -->
     </div>
-    <!-- /.row -->
-    <div class="list-group">
-    {{#each searchList}}
-    {{> search_item}}
-    {{/each}}
-        </div>
+    <div class="row">
+    </div>
+    {{> search_list}}
 </template>

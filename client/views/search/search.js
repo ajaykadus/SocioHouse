@@ -38,16 +38,12 @@ Template.search_item.helpers({
             }
         }
         return imageURL;
-    },
-    getUsrImageURL : function(url, size) {
-        return "img/user_default.png"
     }
 
 });
 
 Template.search_list.helpers({
     searchList: function () {
-        console.log(Session.get("searchList"), "erfre");
         return Session.get("searchList");
 
     }
@@ -59,11 +55,10 @@ Template.search_item.events({
         Session.set("counter", Session.get("counter") + 10);
     }
 });
-/**
- * Created by akadus on 12/22/14.
- */
 
-Template.search_list.events({
+Session.setDefault("usrAuthenticated", false);
+
+Template.search.events({
     'keyup .search-houses': function (e) {
         var searcKey = $(e.currentTarget).val();
         if (e.which === 13) {
@@ -71,8 +66,48 @@ Template.search_list.events({
                 Session.set("searchList", JSON.parse(results.content).listings); //results.data should be a JSON object
             });
         }
+    },
+    'click .usr-login': function () {
+        // increment the counter when button is clicked
+        Session.set("usrAuthenticated", true);
+    },
+    'click .usr-logout': function () {
+        // increment the counter when button is clicked
+        Session.set("usrAuthenticated", false);
     }
-})
-/**
- * Created by akadus on 12/22/14.
- */
+
+});
+
+Template.search_item.events({
+    'click .house-add-btn': function(event, template) {
+        event.preventDefault();
+
+        var home = {
+            id: template.find('.home-id').value,
+            image: template.find('.home-photo').value,
+            description: template.find('.home-description').value,
+            price: template.find('.home-price').value,
+            address: template.find('.home-address').value
+        };
+
+        $(event.currentTarget).removeClass('house-add-btn');
+        $(event.currentTarget).addClass('house-remove-btn').text('Remove');
+
+        Meteor.call('AddHome', Meteor.user()._id, home.id, home.image, home.description, home.price, home.address);
+
+    },
+    'click .house-remove-btn': function(event, template) {
+        event.preventDefault();
+
+        var home = {
+            id: template.find('.home-id').value
+        };
+
+        $(event.currentTarget).removeClass('house-remove-btn');
+        $(event.currentTarget).addClass('house-add-btn').text('Add');
+
+        Meteor.call('removeHome', home.id);
+
+    }
+});
+

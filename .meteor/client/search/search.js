@@ -1,13 +1,5 @@
 // counter starts at 0
-Session.setDefault("counter", 0);
 Session.setDefault("searchList", []);
-
-
-Template.search_item.helpers({
-    counter: function () {
-        return Session.get("counter");
-    }
-});
 
 Template.search_list.helpers({
     searchList: function() {
