@@ -25,7 +25,6 @@ Meteor.methods({
         Homes.remove({home_id:id});
     },
     getMyHomes: function() {
-        console.log(Meteor.userId())
         return Homes.find({user_id: Meteor.userId()}).fetch();
     }
 });

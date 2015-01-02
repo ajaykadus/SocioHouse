@@ -11,15 +11,29 @@ Helper = (function () {
             return re.test(email);
         }
     }
-}
-)();
+})();
 
-Handlebars.registerHelper('if_eq', function(context, options) {
+Handlebars.registerHelper('if_eq', function (context, options) {
     if (context == options.hash.compare)
         return options.fn(this);
     return options.inverse(this);
 });
 
-Handlebars.registerHelper('getUsrImageURL', function(url, size) {
-    return "img/default_user.png"
+Handlebars.registerHelper('truncate', function (text, size) {
+    if (text.length <= size) {
+        return text;
+    }
+    else {
+        return text.substring(0, size) + '...'
+    }
+});
+
+Handlebars.registerHelper('getUsrImageURL', function (url, size) {
+    var fbAccount = Session.get("fbAccountDetails");
+    if (fbAccount) {
+        return "http://graph.facebook.com/" + fbAccount.id + "/picture?type=large"
+    }
+    else {
+        return "img/default_user.png"
+    }
 });

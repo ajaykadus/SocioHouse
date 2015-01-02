@@ -1,1 +1,9 @@
-Meteor.subscribe("myFollowingHouses");
+Homes = new Mongo.Collection("homes");
+Meteor.subscribe("myHomesList");
+
+//Meteor.call("getMyHomes", function (error, results) {
+//    Session.set("myHomesList", results); //results.data should be a JSON object
+//});
+Meteor.call('getUserData', function (err, data) {
+    Session.set("fbAccountDetails", data);
+});

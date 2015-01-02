@@ -1,0 +1,27 @@
+<template name="home">
+    <div class="home-page container">
+        <div class="row panel">
+            <div class="col-md-4 bg_blur " style="background-image: url('{{accountDetails.cover.source}}');">
+                <a href="#" class="follow_btn hidden-xs">Follow</a>
+            </div>
+            <div class="col-md-8  col-xs-12">
+                <img src="http://graph.facebook.com/{{accountDetails.id}}/picture?type=large"
+                     class="img-thumbnail visible-xs picture_mob"/>
+                <div class="header">
+                    <h1>{{accountDetails.name}}</h1>
+                    <h4>{{accountDetails.email}}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row nav">
+            <div class="col-md-4"></div>
+            <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+                <div class="my-houses-link col-md-4 col-xs-4 well"><i class="fa fa-weixin fa-lg"></i>My Houses: {{myHouseCount}}</div>
+                <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> 26</div>
+                <div class="col-md-4 col-xs-4 well"><i class="fa fa-thumbs-o-up fa-lg"></i> 26</div>
+            </div>
+        </div>
+    </div>
+
+</template>

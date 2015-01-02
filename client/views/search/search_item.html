@@ -11,7 +11,7 @@
                     <div class="title">
                         <a href="#">{{address.line}}, {{address.city}}, {{address.state}}</a>
                     </div>
-                    <div class="description">{{description}}</div>
+                    <div class="description">{{truncate description 255}}</div>
                 </div>
                 <div class="bottom">
                     <a href="#" class="house-add-btn btn btn-info btn-block">
@@ -26,4 +26,5 @@
         <input class="home-address" type="hidden" value="{{address.line}}, {{address.city}}, {{address.state}}">
         <input class="home-price" type="hidden" value="{{ price }}">
     </div>
+
 </template>

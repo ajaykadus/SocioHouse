@@ -2,7 +2,13 @@
  * Created by akadus on 12/26/14.
  */
 Template.login.events({
-
+    'click #btn-fblogin': function() {
+        console.log("bibib")
+        Meteor.loginWithFacebook(function (error) {
+                console.log(error);
+            }
+        )
+    },
     'click #btn-login': function (e, t) {
         e.preventDefault();
         // retrieve the input field values
