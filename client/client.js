@@ -1,4 +1,4 @@
-Homes = new Mongo.Collection("homes");
+Houses = new Mongo.Collection("houses");
 Meteor.subscribe("myHomesList");
 
 //Meteor.call("getMyHomes", function (error, results) {

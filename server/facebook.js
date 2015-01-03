@@ -27,11 +27,8 @@ Facebook.prototype.getUserData = function() {
 
 Meteor.methods({
     getUserData: function() {
-        console.log(Meteor.user().services.facebook,":eeih")
         var fb = new Facebook(Meteor.user().services.facebook.accessToken);
-        console.log(fb,"what is this");
         var data = fb.getUserData();
-        console.log(data,"thisis g")
         return data;
     },
     getFriendsData: function() {

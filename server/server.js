@@ -1,4 +1,5 @@
-Homes = new Mongo.Collection("homes");
+Houses = new Mongo.Collection("houses");
+HouseComments = new Mongo.Collection("housesComments");
 
 Meteor.startup(function () {
     Meteor.methods({
@@ -12,9 +13,9 @@ Meteor.startup(function () {
 
 Meteor.methods({
     AddHome: function (usrId, id, image, description, price, address) {
-        Homes.insert({
+        Houses.insert({
             user_id: usrId,
-            home_id: id,
+            house_id: id,
             image: image,
             description: description,
             price: price,
@@ -22,9 +23,17 @@ Meteor.methods({
         });
     },
     removeHome: function (id) {
-        Homes.remove({home_id:id});
+        Houses.remove({house_id:id});
     },
-    getMyHomes: function() {
-        return Homes.find({user_id: Meteor.userId()}).fetch();
+    getMyHouses: function() {
+        return Houses.find({user_id: Meteor.userId()}).fetch();
+    },
+    commentHouse: function (usrId, id, comment, createdAt) {
+        HouseComments.insert({
+            user_id: usrId,
+            house_id: id,
+            comment: comment,
+            createdAt: createdAt
+        });
     }
 });
