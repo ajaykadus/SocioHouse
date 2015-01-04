@@ -3,7 +3,6 @@
  */
 Template.login.events({
     'click #btn-fblogin': function() {
-        console.log("bibib")
         Meteor.loginWithFacebook(function (error) {
                 console.log(error);
             }
@@ -64,8 +63,7 @@ Template.forgotPassword.helpers({
     resetPassword: function (t) {
         if (Accounts._resetPasswordToken) {
             Session.set('resetPassword', Accounts._resetPasswordToken);
-        }
-        ;
+        };
         return Session.get('resetPassword');
     }
 });

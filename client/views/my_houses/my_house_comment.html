@@ -1,0 +1,21 @@
+<template name="houseComment">
+    <li class="media media-replied" id="replied">
+        <a class="pull-left" href="#">
+            <img class="media-object img-circle"
+                 src="http://graph.facebook.com/{{usr_fb_id}}/picture?type=large"
+            alt="profile">
+        </a>
+
+        <div class="media-body">
+            <div class="well well-lg">
+                <h4 class="media-heading text-uppercase reviews"><span
+                        class="glyphicon glyphicon-share-alt"></span> {{ usr_name }}</h4>
+                <span class="media-date text-uppercase reviews list-inline"> {{prettifyDate createdAt}} </span>
+
+                <p class="media-comment">
+                    {{ truncate comment "120" }}
+                </p>
+            </div>
+        </div>
+    </li>
+</template>

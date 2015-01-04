@@ -37,3 +37,8 @@ Handlebars.registerHelper('getUsrImageURL', function (url, size) {
         return "img/default_user.png"
     }
 });
+
+Handlebars.registerHelper("prettifyDate", function(timestamp) {
+    return moment(timestamp).fromNow();
+
+});

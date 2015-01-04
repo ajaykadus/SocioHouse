@@ -5,7 +5,8 @@ Meteor.publish("myHomesList", function () {
     return Houses.find({user_id: this.userId});
 });
 
-Meteor.publish("mHomesListComment", function () {
-    return Houses.find({user_id: this.userId});
+Meteor.publish("houseLogisticsData", function (houseId) {
+    return HouseLogistics.find({house_id: houseId});
 });
+
 

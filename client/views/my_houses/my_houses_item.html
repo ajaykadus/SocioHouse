@@ -22,9 +22,9 @@
                         <a href="#" class="house-remove-btn btn btn-info btn-circle text-uppercase">
                             Remove
                         </a>
-                    <a class="btn btn-info btn-circle text-uppercase show-house-comment-form" href="#" id="reply"><span
-                            class="glyphicon glyphicon-share-alt"></span> Reply</a>
-                    <a class="btn btn-warning btn-circle show-house-comments text-uppercase" href="#"><span class="glyphicon glyphicon-comment"></span> 2 comments</a>
+                    <a class="btn btn-warning btn-circle show-house-comment-form show-house-comments text-uppercase" href="#"><span class="glyphicon glyphicon-comment"></span>Comment</a>
+                    <a class="rank-up-house btn btn-danger btn-circle text-uppercase" href="#"><span class="rank-up-down-house glyphicon glyphicon-thumbs-up"></span></a>
+                    <a class="btn btn-info btn-circle text-uppercase" href="#"><span class="glyphicon "></span> {{ rank }}</a>
                 </div>
                 <div style="display: none" class="house-comment-form tab-pane social-comments-form" id="add-comment">
                     <form action="#" class="form-horizontal" id="commentForm" role="form">
@@ -49,25 +49,9 @@
 
                 <div class="collapse house-comments" style="">
                     <ul class="media-list">
-                        <li class="media media-replied" id="replied">
-                            <a class="pull-left" href="#">
-                                <img class="media-object img-circle"
-                                     src="{{getUsrImageURL " currentUser.profie_pic" "s" }}"
-                                     alt="profile">
-                            </a>
-
-                            <div class="media-body">
-                                <div class="well well-lg">
-                                    <h4 class="media-heading text-uppercase reviews"><span
-                                            class="glyphicon glyphicon-share-alt"></span> Mary</h4>
-                                    <span class="media-date text-uppercase reviews list-inline">01/12/2015</span>
-
-                                    <p class="media-comment">
-                                        Thank you Guys!
-                                    </p>
-                                </div>
-                            </div>
-                        </li>
+                        {{#each houseComments}}
+                        {{> houseComment}}
+                        {{/each}}
                     </ul>
                 </div>
             </div>
