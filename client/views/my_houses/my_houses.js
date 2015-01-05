@@ -56,7 +56,6 @@ Template.myHousesItem.events({
             house_id: template.find('.house-id').value
         };
         if (Session.get('houseComments').length === 0) {
-
             Meteor.call('getHouseComments', Meteor.user()._id, paramsData.house_id, function (err, data) {
                 Session.set('houseComments', data);
                 console.log("callback", Session.get('houseComments'));
@@ -80,13 +79,14 @@ Template.myHousesItem.events({
             Meteor.call('insertOrUpdateHouseLogistics', Meteor.user()._id, paramsData.house_id,'up', function (err, data) {
             });
             $obj.removeClass('glyphicon-thumbs-up').addClass('glyphicon-thumbs-down');
+            $(event.currentTarget).removeClass('btn-success').addClass('btn-danger');
         }
         else {
             Meteor.call('insertOrUpdateHouseLogistics', Meteor.user()._id, paramsData.house_id,'down', function (err, data) {
             });
             $obj.removeClass('glyphicon-thumbs-down').addClass('glyphicon-thumbs-up');
+            $(event.currentTarget).removeClass('btn-danger').addClass('btn-success');
         }
-
     }
 });
 
