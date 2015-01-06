@@ -8,8 +8,8 @@
 
         <div class="media-body">
             <div class="well well-lg">
-                <h4 class="media-heading text-uppercase reviews"><span
-                        class="glyphicon glyphicon-share-alt"></span> {{ usr_name }}</h4>
+                <span class="media-heading text-uppercase reviews"><span
+                        class="glyphicon glyphicon-share-alt"></span> {{ truncate usr_name "30"}}</span>
                 <span class="media-date text-uppercase reviews list-inline"> {{prettifyDate createdAt}} </span>
 
                 <p class="media-comment">

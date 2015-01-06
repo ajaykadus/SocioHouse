@@ -21,6 +21,6 @@ Template.home.helpers({
         return Session.get("fbAccountDetails");
     },
     myHouseCount: function () {
-        return Homes.find().count();
+        return Houses.find().count();
     }
 });

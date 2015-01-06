@@ -3,13 +3,12 @@ Router.route('/', {
     onBeforeAction: function () {
         if (! Meteor.user()) {
             if (Meteor.loggingIn()) {
-                Router.go('search');
+                Router.go('home');
             }
             else{
                 Router.go('login');
             }
         }
-        Router.go('home');
         this.next();
     }
 });

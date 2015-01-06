@@ -30,16 +30,16 @@ Template.myHousesItem.events({
 
     },
 
-    'submit #commentForm': function (event, template) {
+    'submit form#commentForm': function (event, template) {
 
         var Comment = {
             house_id: template.find('.house-id').value,
-            content: template.find('#comment-content').value,
+            content: template.find('.comment-content').value,
             createdAt: new Date()
         };
 
         // Clear form
-        $(template.find('#comment-content')).val("");
+        $(template.find('.comment-content')).val("");
 
         // Prevent default form submit
         Meteor.call('commentHouse', Meteor.user()._id, Session.get("fbAccountDetails").id, Meteor.user().profile.name, Comment.house_id, Comment.content, Comment.createdAt, function () {
