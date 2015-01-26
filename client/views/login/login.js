@@ -31,18 +31,21 @@ Template.login.events({
         });
         return false;
     },
-    'submit #signupform': function (e, t) {
+    'click #btn-signup': function (e, t) {
         e.preventDefault();
         var email = t.find('#account-email').value
-            , password = t.find('#account-password').value;
+            , password = t.find('#account-password').value
+        , firstName = t.find('#first-name').value
+        , lastName = t.find('#last-name').value;
 
         // Trim and validate the input
         var email = Helper.trimInput(email);
 
         if (Helper.isValidPassword(password)) {
 
-            Accounts.createUser({email: email, password: password}, function (err) {
+            Accounts.createUser({profile: {name: firstName + ' ' + lastName},email: email, password: password}, function (err) {
                 if (err) {
+                    console.log(err,"error")
                     Router.go('login');
                     // Inform the user that account creation failed
                 } else {

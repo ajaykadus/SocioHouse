@@ -4,7 +4,7 @@ Helper = (function () {
             return val.replace(/^\s*|\s*$/g, "");
         },
         isValidPassword: function (val) {
-            return val.length >= 6 ? true : false;
+            return val.length >= 1 ? true : false;
         },
         isEmail: function (email) {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

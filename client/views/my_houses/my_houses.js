@@ -39,7 +39,7 @@ Template.myHousesItem.events({
         $(template.find('.comment-content')).val("");
 
         // Prevent default form submit
-        Meteor.call('commentHouse', Meteor.user()._id, Session.get("fbAccountDetails").id, Meteor.user().profile.name, Comment.house_id, Comment.content, Comment.createdAt, function (data) {
+        Meteor.call('commentHouse', Meteor.user()._id, (Session.get("fbAccountDetails") || {id:''}).id, Meteor.user().profile.name, Comment.house_id, Comment.content, Comment.createdAt, function (data) {
         });
 
         return false;
