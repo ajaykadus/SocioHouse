@@ -279,4 +279,6 @@ input[type="file"]{
 .media {
     margin: 0px;
 }
-
+.body {
+    margin-top: 50px;
+}

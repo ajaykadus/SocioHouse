@@ -92,7 +92,7 @@ Template.search_item.events({
 
         $(event.currentTarget).removeClass('house-add-btn');
         $(event.currentTarget).addClass('house-remove-btn').text('Remove');
-
+        Meteor.call('addHouseLogistic', Meteor.user()._id, home.id, "add");
         Meteor.call('AddHome', Meteor.user()._id, home.id, home.image, home.description, home.price, home.address);
 
     },
@@ -105,7 +105,7 @@ Template.search_item.events({
 
         $(event.currentTarget).removeClass('house-remove-btn');
         $(event.currentTarget).addClass('house-add-btn').text('Add');
-
+        Meteor.call('addHouseLogistic', Meteor.user()._id, home.id, "remove");
         Meteor.call('removeHome', home.id);
 
     }

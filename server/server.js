@@ -21,8 +21,7 @@ Meteor.methods({
             description: description,
             price: price,
             address: address,
-            rank: 1
-
+            logistic: HouseLogistics.find({house_id: id}).fetch()
         });
     },
     removeHome: function (id) {
@@ -32,14 +31,17 @@ Meteor.methods({
     //    return Houses.find({user_id: Meteor.userId()}).fetch();
     //},
     commentHouse: function (usrId, fbId, usrName, id, comment, createdAt) {
-        return HouseComments.insert({
+        var comment = {
             usr_id: usrId,
             usr_fb_id: fbId,
             usr_name: usrName,
             house_id: id,
             comment: comment,
             createdAt: createdAt
-        });
+        };
+        HouseLogistics.update({house_id: id}, {$addToSet: {comments: comment}});
+        Houses.update({house_id: id}, {$set: {logistic: HouseLogistics.find({house_id: id}).fetch()}});
+        return HouseComments.insert(comment);
     },
     getHouseComments: function (usrId, id) {
         return HouseComments.find({
@@ -47,19 +49,29 @@ Meteor.methods({
             house_id: id
         }).fetch();
     },
-    insertOrUpdateHouseLogistics: function (usrId, id, type) {
+    addHouseLogistic: function (usrId, id, type) {
         var temp = HouseLogistics.find({house_id: id}).fetch();
-        if(temp.length === 0 ) {
-            HouseLogistics.insert({house_id: id, usr_id:usrId , rank: 1});
+        if (temp.length === 0) {
+            HouseLogistics.insert({house_id: id, usr_id: usrId, addCount: 1, rank: 0, comments: []});
         }
         else {
-            if(type === 'up') {
-                HouseLogistics.update({house_id: id}, {$set: {rank: temp[0].rank + 1}});
+            if (type === 'add') {
+                HouseLogistics.update({house_id: id}, {$set: {addCount: temp[0].addCount + 1}});
             }
             else {
-                HouseLogistics.update({house_id: id}, {$set: {rank: temp[0].rank - 1}});
+                HouseLogistics.update({house_id: id}, {$set: {addCount: temp[0].addCount - 1}});
             }
         }
-        Houses.update({house_id: id}, { $set:{rank: HouseLogistics.find({house_id: id}).fetch()[0].rank}});
+        Houses.update({house_id: id}, {$set: {logistic: HouseLogistics.find({house_id: id}).fetch()}});
+    },
+    updateRank: function (usrId, id, type) {
+        var temp = HouseLogistics.find({house_id: id}).fetch();
+        if (type === 'up') {
+            HouseLogistics.update({house_id: id}, {$set: {rank: temp[0].rank + 1}});
+        }
+        else {
+            HouseLogistics.update({house_id: id}, {$set: {rank: temp[0].rank - 1}});
+        }
+        Houses.update({house_id: id}, {$set: {logistic: HouseLogistics.find({house_id: id}).fetch()}});
     }
 });
