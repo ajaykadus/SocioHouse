@@ -3,5 +3,8 @@ Template.menu.events({
         Meteor.logout(function() {
             Router.go('/');
         });
+    },
+    "click .navbar-nav li": function(event, template) {
+        $(template.find(".navbar-collapse")).removeClass('in')
     }
 });
