@@ -18,4 +18,5 @@ Router.map( function () {
     this.route('search');
     this.route('my_houses');
     this.route('forgot_password');
+    this.route('my_bidding');
 });
