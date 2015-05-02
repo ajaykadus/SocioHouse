@@ -9,6 +9,11 @@ Helper = (function () {
         isEmail: function (email) {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
+        },
+        formatPrice: function (price) {
+            var intPrice = parseInt(price);
+            var dollarPrice = intPrice.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            return dollarPrice;
         }
     }
 })();

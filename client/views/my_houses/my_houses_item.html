@@ -9,22 +9,30 @@
                 </div>
                 <div class="info">
                     <span class="glyphicon glyphicon-usd" aria-hidden="true"><span
-                            class="listing-price">{{ price }}</span></span>
+                            class="listing-price">{{ formatPrice }}</span></span>
 
                     <div class="title">
                         <a href="#">{{address}}</a>
                     </div>
                     <div class="description">{{truncate description 225}}</div>
                 </div>
+                <div class="range range-danger">
+                    <input id="js-bid-range" type="range" name="range" min="1" max={{ price }} value={{ formatPrice }}>
+                    <output id="range">{{ formatPrice }}</output>
+                </div>
             </div>
             <div class="social-comments-section">
                 <div class="media-body">
-                        <a href="#" class="house-remove-btn btn btn-info btn-circle text-uppercase">
-                            <span class="glyphicon glyphicon-remove-sign"></span>
-                        </a>
-                    <a class="btn btn-warning btn-circle show-house-comment-form show-house-comments text-uppercase" href="#"><span class="glyphicon glyphicon-comment"></span>Comment</a>
-                    <a class="rank-up-house btn btn-success btn-circle text-uppercase" href="#"><span class="rank-up-down-house glyphicon glyphicon-thumbs-up"></span> {{ houseLogistics.rank }}</a>
-                    <a class="bid-up-house btn btn-success btn-circle text-uppercase" href="#"><span class="rank-up-down-house glyphicon glyphicon-usd"></span>Bid</a>
+                    <a href="#" class="house-remove-btn btn btn-info btn-circle text-uppercase">
+                        <span class="glyphicon glyphicon-remove-sign"></span>
+                    </a>
+                    <a class="btn btn-warning btn-circle show-house-comment-form show-house-comments text-uppercase"
+                       href="#"><span class="glyphicon glyphicon-comment"></span>Comment</a>
+                    <a class="rank-up-house btn btn-success btn-circle text-uppercase" href="#"><span
+                            class="rank-up-down-house glyphicon glyphicon-thumbs-up"></span> {{ houseLogistics.rank }}
+                    </a>
+                    <a class="bid-up-house btn btn-success btn-circle text-uppercase" href="#"><span
+                            class="rank-up-down-house glyphicon glyphicon-usd"></span>Bid</a>
                 </div>
                 <div style="display: none" class="house-comment-form tab-pane social-comments-form" id="add-comment">
                     <form class="form-horizontal" id="commentForm" role="form">
@@ -50,7 +58,7 @@
                 <div class="collapse house-comments" style="">
                     <ul class="media-list">
                         {{#each houseLogistics.comments}}
-                        {{> houseComment}}
+                            {{> houseComment}}
                         {{/each}}
                     </ul>
                 </div>

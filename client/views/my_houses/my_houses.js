@@ -11,6 +11,9 @@ Template.myHousesItem.helpers({
     },
     houseLogistics: function() {
         return this.logistic[0];
+    },
+    formatPrice: function() {
+        return Helper.formatPrice(this.price);
     }
 });
 
@@ -26,7 +29,10 @@ Template.myHousesItem.events({
         Meteor.call('removeHome', house.id);
 
     },
-
+    "input #js-bid-range": function (event, template) {
+        var p = Helper.formatPrice($(event.currentTarget).val());
+        $(template.find("output#range")).html(p);
+    },
     'submit form#commentForm': function (event, template) {
 
         var Comment = {
