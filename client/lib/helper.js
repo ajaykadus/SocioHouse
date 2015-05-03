@@ -24,6 +24,16 @@ Handlebars.registerHelper('if_eq', function (context, options) {
     return options.inverse(this);
 });
 
+Handlebars.registerHelper('truncate_lower_case', function (text, size) {
+    if (text.length <= size) {
+        return text.toLowerCase();
+    }
+    else {
+        return (text.substring(0, size)).toLowerCase() + '...'
+    }
+});
+
+
 Handlebars.registerHelper('truncate', function (text, size) {
     if (text.length <= size) {
         return text;
