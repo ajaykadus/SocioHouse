@@ -14,6 +14,7 @@
 }
 .g-hover-card .description {
     max-height: 75px;
+    overflow: hidden;
 }
 
 .g-hover-card .user-avatar {
