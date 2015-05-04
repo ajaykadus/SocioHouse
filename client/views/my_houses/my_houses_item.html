@@ -8,9 +8,8 @@
                     <img src="{{getUsrImageURL " currentUser.profie_pic" "s" }}" alt="">
                 </div>
                 <div class="info">
-                    <span class="glyphicon glyphicon-usd" aria-hidden="true"><span
-                            class="listing-price">{{ formatPrice }}</span></span>
-
+                    <button type="button" class="btn btn-hot text-uppercase btn-lg">{{ formatPrice }}</button>
+                    <button type="button" class="btn btn-sunny text-uppercase btn-lg">{{ formatPrice }}</button>
                     <div class="title">
                         <a href="#">{{address}}</a>
                     </div>
@@ -32,7 +31,7 @@
                             class="rank-up-down-house glyphicon glyphicon-thumbs-up"></span> {{ houseLogistics.rank }}
                     </a>
                     <a class="bid-up-house btn btn-success btn-circle text-uppercase" href="#"><span
-                            class="rank-up-down-house glyphicon glyphicon-usd"></span>Bid</a>
+                            class="glyphicon glyphicon-usd"></span>Bid</a>
                 </div>
                 <div style="display: none" class="house-comment-form tab-pane social-comments-form" id="add-comment">
                     <form class="form-horizontal" id="commentForm" role="form">

@@ -29,6 +29,9 @@ Template.myHousesItem.events({
         Meteor.call('removeHome', house.id);
 
     },
+    'click .bid-up-house' : function (event, template) {
+        console.log(event, "whatis thi", template)
+    },
     "input #js-bid-range": function (event, template) {
         var p = Helper.formatPrice($(event.currentTarget).val());
         $(template.find("output#range")).html(p);
