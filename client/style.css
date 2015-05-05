@@ -314,7 +314,7 @@ input[type="file"] {
 }
 
 .social-comments-section {
-    padding: 0px 0px 0px 10px;
+    padding: 0px 0px 0px 2px;
 }
 
 .social-comments-form {
@@ -331,4 +331,8 @@ input[type="file"] {
 
 .body {
     margin-top: 50px;
+}
+
+.search-go-btn {
+    margin: 0px;
 }
