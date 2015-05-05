@@ -12,7 +12,7 @@ Helper = (function () {
         },
         formatPrice: function (price) {
             var intPrice = parseInt(price);
-            var dollarPrice = intPrice.toFixed(1).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+            var dollarPrice = intPrice.toFixed(0).replace(/\d(?=(\d{3})+\.)/g, '$&,');
             return "$" + dollarPrice;
         }
     }

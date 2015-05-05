@@ -8,16 +8,16 @@
                     <img src="{{getUsrImageURL " currentUser.profie_pic" "s" }}" alt="">
                 </div>
                 <div class="info">
-                    <button type="button" class="btn btn-hot text-uppercase btn-lg">{{ formatPrice }}</button>
-                    <button type="button" class="btn btn-sunny text-uppercase btn-lg">{{ formatPrice }}</button>
+                    <button type="button" class="btn btn-hot text-uppercase btn-lg">{{ formatPrice price}}</button>
+                    <button type="button" class="btn btn-fresh text-uppercase btn-lg">{{ formatPrice houseLogistics.avgUserPrice}}</button>
                     <div class="title">
                         <a href="#">{{address}}</a>
                     </div>
                     <div class="description">{{truncate_lower_case description 300}}</div>
                 </div>
                 <div class="range range-danger">
-                    <input id="js-bid-range" type="range" name="range" min="1" max={{ price }} value={{ formatPrice }}>
-                    <output id="range">{{ formatPrice }}</output>
+                    <input class="js-my-bid-price" id="js-bid-range" type="range" name="range" min="1" max={{ price }} value={{ formatPrice price}}>
+                    <output id="range">{{ formatPrice price}}</output>
                 </div>
             </div>
             <div class="social-comments-section">
@@ -66,7 +66,7 @@
     </div>
 
     <input class="house-id" type="hidden" value="{{ house_id }}">
-    <!--<input class="home-photo" type="hidden" value="{{ g etImageURL photo.href "m" }}">-->
+    <!--<input class="home-photo" type="hidden" value="{{ getImageURL photo.href "m" }}">-->
     <!--<input class="home-description" type="hidden" value="{{description}}">-->
     <!--<input class="home-address" type="hidden" value="{{address.line}}, {{address.city}}, {{address.state}}">-->
     <!--<input class="home-price" type="hidden" value="{{ price }}">-->

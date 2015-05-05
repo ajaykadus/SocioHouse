@@ -49,10 +49,17 @@ Meteor.methods({
             house_id: id
         }).fetch();
     },
-    addHouseLogistic: function (usrId, id, type) {
+    addHouseLogistic: function (usrId, id, type, price) {
         var temp = HouseLogistics.find({house_id: id}).fetch();
         if (temp.length === 0) {
-            HouseLogistics.insert({house_id: id, usr_id: usrId, addCount: 1, rank: 0, comments: []});
+            HouseLogistics.insert({
+                house_id: id,
+                usr_id: usrId,
+                addCount: 1,
+                rank: 0,
+                comments: [],
+                avgUserPrice: parseInt(price) || 0
+            });
         }
         else {
             if (type === 'add') {
@@ -72,6 +79,11 @@ Meteor.methods({
         else {
             HouseLogistics.update({house_id: id}, {$set: {rank: temp[0].rank - 1}});
         }
+        Houses.update({house_id: id}, {$set: {logistic: HouseLogistics.find({house_id: id}).fetch()}});
+    },
+    updateUserPrice: function (usrId, id, price) {
+        var temp = HouseLogistics.find({house_id: id}).fetch();
+        HouseLogistics.update({house_id: id}, {$set: {avgUserPrice: parseInt(temp[0].avgUserPrice) + parseInt(price) }});
         Houses.update({house_id: id}, {$set: {logistic: HouseLogistics.find({house_id: id}).fetch()}});
     }
 });

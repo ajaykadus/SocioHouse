@@ -92,7 +92,7 @@ Template.search_item.events({
 
         $(event.currentTarget).removeClass('house-add-btn');
         $(event.currentTarget).addClass('house-remove-btn').text('Remove');
-        Meteor.call('addHouseLogistic', Meteor.user()._id, home.id, "add");
+        Meteor.call('addHouseLogistic', Meteor.user()._id, home.id, "add", home.price);
         Meteor.call('AddHome', Meteor.user()._id, home.id, home.image, home.description, home.price, home.address);
 
     },
