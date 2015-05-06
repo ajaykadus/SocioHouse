@@ -16,7 +16,7 @@
                     <div class="description">{{truncate_lower_case description 300}}</div>
                 </div>
                 <div class="range range-danger">
-                    <input class="js-my-bid-price" id="js-bid-range" type="range" name="range" min="1" max={{ price }} value={{ formatPrice price}}>
+                    <input class="js-my-bid-price" id="js-bid-range" type="range" name="range" min="{{ minBidPrice  }}" max={{ maxBidPrice }} value={{ formatPrice price}}>
                     <output id="range">{{ formatPrice price}}</output>
                 </div>
             </div>

@@ -14,6 +14,16 @@ Template.myHousesItem.helpers({
     },
     formatPrice: function(price) {
         return Helper.formatPrice(price);
+    },
+    minBidPrice: function () {
+        var logistic = this.logistic[0];
+        var minPrice = parseInt(this.price) - logistic.avgUserPrice / 4;
+        return minPrice;
+    },
+    maxBidPrice: function () {
+        var logistic = this.logistic[0];
+        var maxPrice = parseInt(this.price) + logistic.avgUserPrice / 4;
+        return maxPrice;
     }
 });
 
