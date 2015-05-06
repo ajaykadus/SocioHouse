@@ -58,7 +58,8 @@ Meteor.methods({
                 addCount: 1,
                 rank: 0,
                 comments: [],
-                avgUserPrice: parseInt(price) || 0
+                avgUserPrice: parseInt(price) || 0,
+                numberOfBids: 1
             });
         }
         else {
@@ -83,7 +84,7 @@ Meteor.methods({
     },
     updateUserPrice: function (usrId, id, price) {
         var temp = HouseLogistics.find({house_id: id}).fetch();
-        HouseLogistics.update({house_id: id}, {$set: {avgUserPrice: parseInt(temp[0].avgUserPrice) + parseInt(price) }});
+        HouseLogistics.update({house_id: id}, {$set: {avgUserPrice: (parseInt(temp[0].avgUserPrice) + parseInt(price)) / (temp[0].numberOfBids + 1), numberOfBids : temp[0].numberOfBids + 1 }});
         Houses.update({house_id: id}, {$set: {logistic: HouseLogistics.find({house_id: id}).fetch()}});
     }
 });
